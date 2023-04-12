@@ -1,8 +1,5 @@
 import { Suspense } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
 import './styles/index.scss';
-import { AboutPage } from 'pages/AboutPage';
-import { MainPage } from 'pages/MainPage';
 import { useTheme } from './providers/ThemeProvider';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppRouter } from './providers/routes';
@@ -14,11 +11,13 @@ export default function App() {
 
   return (
     <div className={classNames('app', {}, [theme])}>
-      <Navbar />
-      <div className='content-page'>
-        <Sidebar />
-        <AppRouter />
-      </div>
+      <Suspense fallback="">
+        <Navbar />
+        <div className='content-page'>
+          <Sidebar />
+          <AppRouter />
+        </div>
+      </Suspense>
     </div>
   )
 }
