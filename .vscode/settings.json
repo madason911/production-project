@@ -5,7 +5,8 @@
   ],
   "i18n-ally.keystyle": "nested",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": true
   },
   "eslint.validate": [
     "javascript",
@@ -13,4 +14,7 @@
     "typescript",
     "typescriptreact",
   ],
+  "css.validate": false,
+  "scss.validate": false,
+  "stylelint.validate": ["css", "scss"],
 }
