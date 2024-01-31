@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import './styles/index.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Navbar } from 'widgets/Navbar';
@@ -8,6 +8,10 @@ import { useTheme } from './providers/ThemeProvider';
 
 export default function App() {
     const { theme } = useTheme();
+
+    useEffect(() => {
+        throw Error()
+    }, []);
 
     return (
         <div className={classNames('app', {}, [theme])}>
