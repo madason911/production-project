@@ -9,10 +9,6 @@ import { useTheme } from './providers/ThemeProvider';
 export default function App() {
     const { theme } = useTheme();
 
-    useEffect(() => {
-        throw Error()
-    }, []);
-
     return (
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
