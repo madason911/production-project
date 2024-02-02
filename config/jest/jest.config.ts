@@ -21,6 +21,11 @@ export default {
     coveragePathIgnorePatterns: [
         '/node_modules/',
     ],
+    moduleNameMapper: {
+        '\\.(s?css)$': 'identity-obj-proxy',
+        "\\.svg": "<rootDir>/config/jest/jestEmptyComponent.tsx",
+    },
+    setupFilesAfterEnv: ["<rootDir>config/jest/setupTest.ts"],
     moduleFileExtensions: [
         'js',
         'mjs',
@@ -31,9 +36,7 @@ export default {
         'json',
         'node',
     ],
-    moduleDirectories: [
-        'node_modules',
-    ],
+    moduleDirectories: ['node_modules', 'src'],
     testMatch: [
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
     ],
