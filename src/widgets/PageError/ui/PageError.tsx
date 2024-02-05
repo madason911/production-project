@@ -6,19 +6,22 @@ interface PageErrorProps {
   className?: string;
 }
 
-export const PageError =  ({ className }: PageErrorProps) => {
-  const { t } = useTranslation();
+export const PageError = ({ className }: PageErrorProps) => {
+    const { t } = useTranslation();
 
-  const relaodPage = () => {
-    location.reload();
-  }
+    const relaodPage = () => {
+        location.reload();
+    };
 
-  return (
-    <div className={classNames(cls.PageError, {}, [className])}>
-      {t('Произошла ошибка!')}
-      <button onClick={relaodPage}>
-        {t('Обновить страницу')}
-      </button>
-    </div>
-  );
+    return (
+        <div className={classNames(cls.PageError, {}, [className])}>
+            {t('Произошла ошибка!')}
+            <button
+                type="button"
+                onClick={relaodPage}
+            >
+                {t('Обновить страницу')}
+            </button>
+        </div>
+    );
 };
