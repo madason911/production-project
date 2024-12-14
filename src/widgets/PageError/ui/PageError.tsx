@@ -10,7 +10,7 @@ export const PageError = ({ className }: PageErrorProps) => {
     const { t } = useTranslation();
 
     const relaodPage = () => {
-        location.reload();
+        window.location.reload();
     };
 
     return (

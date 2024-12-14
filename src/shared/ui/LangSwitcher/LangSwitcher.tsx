@@ -1,4 +1,3 @@
-import { Theme } from 'app/providers/ThemeProvider';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ThemeButton } from '../Button/Button';
