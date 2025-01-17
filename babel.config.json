@@ -2,11 +2,15 @@
   "presets": [
     "@babel/preset-env",
     "@babel/preset-typescript",
-    ["@babel/preset-react", {
-      "runtime": "automatic"
-   }]
+    "@babel/preset-react"
   ],
   "plugins": [
-    "i18next-extract"
-  ]
+    "i18next-extract",
+    ["@babel/plugin-transform-react-jsx", { "runtime": "automatic" }]
+  ],
+  "resolve": {
+    "modules": ["node_modules", "stories"],
+    "extensions": [".js", ".jsx", ".react.js", ".ts", ".tsx"],
+    "mainFields": ["browser", "jsnext:main", "main"],
+  },
 }
