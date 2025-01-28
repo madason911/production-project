@@ -8,9 +8,4 @@
     "i18next-extract",
     ["@babel/plugin-transform-react-jsx", { "runtime": "automatic" }]
   ],
-  "resolve": {
-    "modules": ["node_modules", "stories"],
-    "extensions": [".js", ".jsx", ".react.js", ".ts", ".tsx"],
-    "mainFields": ["browser", "jsnext:main", "main"],
-  },
 }
