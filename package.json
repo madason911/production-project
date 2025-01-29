@@ -112,6 +112,7 @@
     "ts-node-dev": "^2.0.0"
   },
   "loki": {
+    "reactUri": "file:./storybook-static",
     "configurations": {
       "chrome.laptop": {
         "target": "chrome.app",
