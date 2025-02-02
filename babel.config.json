@@ -5,7 +5,18 @@
     "@babel/preset-react"
   ],
   "plugins": [
-    "i18next-extract",
+    [
+      "i18next-extract",
+      {
+        "locales": ["en", "ru"], // Языки
+        "outputPath": "public/locales/{{locale}}/{{ns}}.json", // Путь для сохранения
+        "defaultNS": "common", // Неймспейс по умолчанию
+        "keyAsDefaultValue": true, // Использовать ключ как значение по умолчанию
+        "nsSeparator": ":", // Разделитель для неймспейсов (если используется)
+        "keySeparator": ".", // Разделитель для ключей
+        "discardOldKeys": true // Удалять старые ключи
+      }
+    ],
     ["@babel/plugin-transform-react-jsx", { "runtime": "automatic" }]
   ],
 }

@@ -22,8 +22,13 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
                     [
                         'i18next-extract',
                         {
-                            locales: ['ru', 'en'],
-                            keyAsDefaultValue: true,
+                            locales: ['en', 'ru'], // Языки
+                            outputPath: 'public/locales/{{locale}}/{{ns}}.json', // Путь для сохранения
+                            defaultNS: 'common', // Неймспейс по умолчанию
+                            keyAsDefaultValue: true, // Использовать ключ как значение по умолчанию
+                            nsSeparator: ':', // Разделитель для неймспейсов (если используется)
+                            keySeparator: '.', // Разделитель для ключей
+                            discardOldKeys: true, // Удалять старые ключи
                         },
                     ],
                 ],
