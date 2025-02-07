@@ -20,7 +20,7 @@ export function LangSwitcher({ className, short }: LangSwitcherProps) {
             theme={ButtonTheme.BACKGROUND_INVERTED}
             onClick={toggle}
         >
-            {t(short ? 'Короткий Язык' : 'Язык')}
+            {short ? t('Короткий Язык') : t('Язык')}
         </Button>
     );
 }
