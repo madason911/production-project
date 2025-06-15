@@ -15,9 +15,10 @@ module.exports = {
         env: {
             node: true,
         },
-        files: ['.eslintrc.{js,cjs}', '**/src/**/*.test.{ts,tsx}'],
+        files: ['.eslintrc.{js,cjs}', '**/src/**/*.{test,stories}.{ts,tsx}'],
         rules: {
             'i18next/no-literal-string': 'off',
+            'max-len': 'off',
         },
         parserOptions: {
             sourceType: 'script',
@@ -27,7 +28,7 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react', '@typescript-eslint', 'i18next'],
+    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
     rules: {
         'react/jsx-indent': [2, 4],
         indent: [2, 4],
@@ -46,10 +47,10 @@ module.exports = {
         'react/jsx-props-no-spreading': 'warn',
         'react/function-component-definition': 'off',
         'no-underscore-dangle': 'off',
-        'i18next/no-literal-string': ['error', {
-            markupOnly: true,
-            ignoreAttribute: ['data-testid', 'to'],
-        }],
+        // 'i18next/no-literal-string': ['error', {
+        //     markupOnly: true,
+        //     ignoreAttribute: ['data-testid', 'to'],
+        // }],
         'max-len': ['error', {
             ignoreComments: true,
             code: 100,
@@ -57,6 +58,13 @@ module.exports = {
         'no-restricted-globals': 'warn',
         '@typescript-eslint/no-unsafe-member-access': 'off', // Отключить предупреждения по доступу к необязательным свойствам
         '@typescript-eslint/no-unsafe-assignment': 'off',
+        'jsx-a11y/click-events-have-key-events': 'off',
+        'jsx-a11y/no-static-element-interactions': 'off',
+        'i18next/no-literal-string': 'off', // Отключить предупреждения по строкам без интернационализации
+
+        // React Hooks rules
+        'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+        'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
     },
     globals: {
         __IS_DEV__: true,
