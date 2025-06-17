@@ -6,16 +6,9 @@
 // import type { Config } from 'jest';
 
 export default {
-    // All imported modules in your tests should be mocked automatically
-    // automock: false,
-
-    // Stop running tests after `n` failures
-    // bail: 0,
-
-    // The directory where Jest should store its cached dependency information
-    // cacheDirectory: "/private/var/folders/vp/rjhrds391qb6gcsc0ty1plw40000gn/T/jest_dx",
-
-    // Automatically clear mock calls, instances, contexts and results before every test
+    globals: {
+        __IS_DEV__: true,
+    },
     clearMocks: true,
     testEnvironment: 'jsdom',
     coveragePathIgnorePatterns: [
@@ -24,6 +17,7 @@ export default {
     moduleNameMapper: {
         '\\.(s?css)$': 'identity-obj-proxy',
         '\\.svg': '<rootDir>/config/jest/jestEmptyComponent.tsx',
+        'entities/(.*)': '<rootDir>src/entities/$1',
     },
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTest.ts'],
     moduleFileExtensions: [
@@ -87,7 +81,6 @@ export default {
     // globalTeardown: undefined,
 
     // A set of global variables that need to be available in all test environments
-    // globals: {},
 
     // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
     // maxWorkers: "50%",
