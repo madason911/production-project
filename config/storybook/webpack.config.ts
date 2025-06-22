@@ -12,9 +12,15 @@ export default ({ config }: {config: webpack.Configuration}) => {
     };
 
     config.resolve?.modules?.push(paths.src);
-    config.resolve?.extensions?.push('ts', 'tsx');
+    config.resolve?.extensions?.push('.mjs', '.js', '.jsx', '.ts', '.tsx', '.json', '.cjs');
     config.module?.rules?.push(buildCssLoaders(true));
 
+    if (config?.resolve?.alias) {
+        config.resolve.alias = {
+            ...config.resolve.alias,
+            entities: path.resolve(__dirname, '..', '..', 'src', 'entities'),
+        };
+    }
     // @ts-ignore
     // eslint-disable-next-line no-param-reassign
     if (config.module && Array.isArray(config.module.rules)) {
