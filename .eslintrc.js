@@ -53,7 +53,7 @@ module.exports = {
         // }],
         'max-len': ['error', {
             ignoreComments: true,
-            code: 100,
+            code: 120,
         }],
         'no-restricted-globals': 'warn',
         '@typescript-eslint/no-unsafe-member-access': 'off', // Отключить предупреждения по доступу к необязательным свойствам
