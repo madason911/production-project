@@ -39,5 +39,12 @@ export default ({ config }: {config: webpack.Configuration}) => {
         });
     }
 
+    config.plugins = [
+        ...(config.plugins || []),
+        new webpack.DefinePlugin({
+            __IS_DEV__: true,
+        }),
+    ];
+
     return config;
 };

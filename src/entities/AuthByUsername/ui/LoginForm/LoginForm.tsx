@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from 'entities/AuthByUsername/model/slice/loginSlice';
 import { getLoginForm } from 'entities/AuthByUsername/model/selectors/getLoginForm/getLoginForm';
 import { loginByUsername } from 'entities/AuthByUsername/model/services/loginByUsername/loginByUsername';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
 import cls from './LoginForm.module.scss';
 
 interface LoginFormProps {
@@ -32,6 +33,13 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
 
     return (
         <div className={classNames(cls.LoginForm, {}, [className])}>
+            <Text title={t('Форма регистрации')} />
+            {loginForm.error
+                && (
+                    <p className={cls.error}>
+                        <Text title={loginForm.error} theme={TextTheme.ERROR} />
+                    </p>
+                )}
             <Input
                 type="text"
                 placeholder={t('Введите username')}
@@ -51,6 +59,7 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
                 className={cls.loginBtn}
                 theme={ButtonTheme.OUTLINE}
                 onClick={onLoginClick}
+                disabled={loginForm.isLoading}
             >
                 {t('Войти')}
             </Button>

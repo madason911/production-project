@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { User } from 'entities/User';
 import axios from 'axios';
+import i18n from 'shared/config/i18n/i18n';
 
 interface LoginByUsernameProps {
   username: string;
@@ -20,7 +21,7 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, {rej
             return response.data;
         } catch (error) {
             // console.log('Login failed:', error);
-            return thunkAPI.rejectWithValue('Login failed');
+            return thunkAPI.rejectWithValue(i18n.t('Ошибка авторизации'));
         }
     },
 );
