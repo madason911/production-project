@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/react';
+import { TranslationDecorator } from '../../src/shared/config/storybook/TranslationDecorator/TranslationDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from '../../src/shared/config/storybook/StoreDecorator/StoreDecorator';
@@ -22,6 +23,7 @@ export const decorators = [
     RouterDecorator,
     StoreDecorator({}),
     StyleDecorator,
+    TranslationDecorator,
 ];
 
 export default preview;
