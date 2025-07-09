@@ -4,12 +4,14 @@ import {
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { LoginSchema } from 'entities/AuthByUsername';
 import { CounterSchema } from 'entities/Counter';
+import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 
 export interface StateSchema {
   counter: CounterSchema,
   user: UserSchema,
-  loginForm?: LoginSchema
+  loginForm?: LoginSchema,
+  profile?: ProfileSchema,
 }
 
 export type StateSchemaKey = keyof StateSchema;

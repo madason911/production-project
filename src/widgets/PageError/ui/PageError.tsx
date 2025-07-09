@@ -1,12 +1,13 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 import cls from './PageError.module.scss';
 
 interface PageErrorProps {
   className?: string;
 }
 
-export const PageError = ({ className }: PageErrorProps) => {
+export const PageError = memo(({ className }: PageErrorProps) => {
     const { t } = useTranslation();
 
     const relaodPage = () => {
@@ -24,4 +25,4 @@ export const PageError = ({ className }: PageErrorProps) => {
             </button>
         </div>
     );
-};
+});
