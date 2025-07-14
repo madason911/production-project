@@ -22,15 +22,15 @@ export const DynamicModuleLoader = memo(({
     const dispatch = useDispatch();
 
     useEffect(() => {
-        Object.entries(reducers).forEach(([name, reducer]: ReducerEntryType) => {
-            store.reducerManager.add(name, reducer);
+        Object.entries(reducers).forEach(([name, reducer]) => {
+            store.reducerManager.add(name as StateSchemaKey, reducer);
             dispatch({ type: `INIT ${name}` });
         });
 
         return () => {
-            Object.entries(reducers).forEach(([name, reducer]: ReducerEntryType) => {
+            Object.entries(reducers).forEach(([name, reducer]) => {
                 if (removeAfterUnmount) {
-                    store.reducerManager.remove(name);
+                    store.reducerManager.remove(name as StateSchemaKey);
                     dispatch({ type: `DELETE ${name}` });
                 }
             });

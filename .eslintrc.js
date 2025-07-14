@@ -62,6 +62,7 @@ module.exports = {
         'jsx-a11y/no-static-element-interactions': 'off',
         'i18next/no-literal-string': 'off', // Отключить предупреждения по строкам без интернационализации
         'no-param-reassign': 'off', // Отключить предупреждения по изменению параметров функции
+        'no-undef': 'off',
 
         // React Hooks rules
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
