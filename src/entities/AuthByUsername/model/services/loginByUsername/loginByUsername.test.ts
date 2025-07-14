@@ -4,9 +4,6 @@ import { userActions } from 'entities/User';
 import { TestAsyncThunk } from 'shared/lib/TestAsyncThunk/TestAsyncThunk';
 import { loginByUsername } from './loginByUsername';
 
-jest.mock('axios');
-const mockedAxios = axios as jest.Mocked<typeof axios>;
-
 describe('loginByUsername asyncThunk', () => {
     const dispatch = jest.fn();
     const getState = jest.fn();
@@ -18,13 +15,13 @@ describe('loginByUsername asyncThunk', () => {
 
     it('успешный логин', async () => {
         const user = { id: '1', username: 'test' };
-        mockedAxios.post.mockResolvedValueOnce({ data: user });
 
         const thunk = TestAsyncThunk(loginByUsername);
+        thunk.api.post.mockResolvedValueOnce({ data: user });
         const result = await thunk.callThunk({ username: 'test', password: '123' });
 
-        expect(mockedAxios.post).toHaveBeenCalledWith(
-            'http://localhost:8000/login',
+        expect(thunk.api.post).toHaveBeenCalledWith(
+            '/login',
             { username: 'test', password: '123' },
         );
         expect(localStorage.getItem(USER_LOCALSTORAGE_KEY)).toEqual(JSON.stringify(user));
@@ -35,9 +32,8 @@ describe('loginByUsername asyncThunk', () => {
     });
 
     it('логин с ошибкой', async () => {
-        mockedAxios.post.mockRejectedValueOnce(new Error('error'));
-
         const thunk = TestAsyncThunk(loginByUsername);
+        thunk.api.post.mockRejectedValueOnce(new Error('error'));
         const result = await thunk.callThunk({ username: 'test', password: 'wrong' });
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
