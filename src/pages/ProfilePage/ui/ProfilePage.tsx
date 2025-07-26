@@ -3,6 +3,7 @@ import {
     getProfileError,
     getProfileIsLoading,
     getProfileReadonly,
+    getProfileValidateErrors,
     profileActions,
     ProfileCard,
     profileReducer,
@@ -15,6 +16,8 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispactch/useAppDispatch'
 import { getProfileForm } from 'entities/Profile/model/selectors/getProfileForm/getProfileForm';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { ValidateProfileError } from 'entities/Profile/model/types/profile';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducerList = {
@@ -29,6 +32,15 @@ export default function ProfilePage() {
     const isLoading = useSelector(getProfileIsLoading);
     const profileData = useSelector(getProfileForm);
     const readonly = useSelector(getProfileReadonly);
+    const validateErrors = useSelector(getProfileValidateErrors);
+
+    const validateErrorTranslates = {
+        [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
+        [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректный регион'),
+        [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
+        [ValidateProfileError.INCORRECT_USER_DATA]: t('Имя и фамилия обязательны'),
+        [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
+    };
 
     useEffect(() => {
         dispatch(fetchProfileData());
@@ -71,6 +83,13 @@ export default function ProfilePage() {
             <DynamicModuleLoader reducers={reducers}>
                 <div>
                     <ProfilePageHeader />
+                    {validateErrors?.length > 0 && validateErrors.map((error) => (
+                        <Text
+                            key={error}
+                            text={validateErrorTranslates[error]}
+                            theme={TextTheme.ERROR}
+                        />
+                    ))}
                     <ProfileCard
                         data={profileData}
                         isLoading={isLoading}
